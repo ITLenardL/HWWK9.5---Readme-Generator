@@ -1,19 +1,56 @@
-const template = (answers) => {
+const template = (data, githubInfo) => {
     return `
-<html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MiniProject</title>
-</head>
-<body>
-    <h1>'hi my name is ${answers.name}'</h1>
-    <h2>'im a developer located in ${answers.location}'</h2>
-    <h3>'im ${answers.age} years old.'</h3>
-    <h3>'my linked in is ${answers.linkedin} and my github is ${answers.github}</h3>
-    
-</body>
-</html>` }
+# **${data.title}**
+
+## Description 
+
+${data.description}
+
+## Table of contents
+
+- [Description](#Description)
+- [Installation](#Installation)
+- [Usage](#Usage)
+- [Licence](#Licence)
+- [Contributors](#Contributors)
+- [Test](#Test)
+- [Repository Link](#Repository)
+- [GitHub Info](#GitHub) 
+
+
+## Installation
+
+${data.installation}
+
+## Usage
+
+${data.usage}
+
+## Licence
+
+${data.licence}
+
+## Contributors
+
+${data.contributing}
+
+## Test
+
+${data.test}
+
+
+## Repository
+
+- [Project Repo](${data.repo})
+
+## GitHub
+
+![Image of user](${githubInfo.githubImage})
+- ${githubInfo.name}
+- [GitHub Profile](${githubInfo.profile})
+- <${githubInfo.email}>
+
+`
+}
 
 module.exports = template;

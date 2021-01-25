@@ -1,6 +1,8 @@
-const template = (data, githubInfo) => {
+const template = (data) => {
     return `
 # **${data.title}**
+
+${data.badge}
 
 ## Description 
 
@@ -15,7 +17,6 @@ ${data.description}
 - [Contributors](#Contributors)
 - [Test](#Test)
 - [Repository Link](#Repository)
-- [GitHub Info](#GitHub) 
 
 
 ## Installation
@@ -41,16 +42,8 @@ ${data.test}
 
 ## Repository
 
-- [Project Repo](${data.repo})
+- [Project Repo](${data.repo})`
 
-## GitHub
-
-![Image of user](${githubInfo.githubImage})
-- ${githubInfo.name}
-- [GitHub Profile](${githubInfo.profile})
-- <${githubInfo.email}>
-
-`
 }
 
 module.exports = template;

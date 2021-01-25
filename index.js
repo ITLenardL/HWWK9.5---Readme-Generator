@@ -1,13 +1,20 @@
+//Declare globally required packages and file functions
 const inquirer = require("inquirer");
 const fs = require('fs');
 const template = require('./template');
 
+//Prompt questions and store answers as an array
 const askQuestions = () => {
-  return inquirer.prompt([
+    return inquirer.prompt([
     {
         type: "input",
         name: "title",
         message: "What is the project title?"
+    },
+    {
+    type: "input",
+    name: "badge",
+    message: "Provide the badges links"
     },
     {
         type: "input",
@@ -27,7 +34,7 @@ const askQuestions = () => {
     {
         type: "input",
         name: "licence",
-        message: "Provide the project licence or your badge link"
+        message: "Provide the project licence"
     },
     {
         type: "input",
@@ -52,25 +59,20 @@ const askQuestions = () => {
 ])};
 
 const init = async() => {
+    //declare answers as the object name for arrayed answers
     const answers = await askQuestions()
-    console.log(answers)
-    const generateMd = template(answers);
-    // const queryUrl = `https://api.github.com/users/${data.username}`;
-    // then.get(queryUrl).then(function(githubData) {
-    //   const githubInfo = {
-    //     githubImage: githubData.data.avatar_url,
-    //     email: githubData.data.email,
-    //     profile: githubData.data.html_url,
-    //     name: githubData.data.name
-    //   }});
-      
-      fs.writeFile("README.md", generateMd, function(err) {
-        if (err) 
-        console.log(err);
-        else
-        console.log("created readme successfully");
-      });
-}
+    // console.log(answers)
 
+    //generatemd as the template filled with answers from array
+    const generateMd = template(answers);
+
+    //write to file into the folder generatedreadme, filename README.md, if error display error message, if successful display success message
+    fs.writeFile("generatedreadme/README.md", generateMd, function(err) {
+    if (err) 
+    console.log(err);
+    else
+    console.log("created readme successfully");
+    });
+}
 
 init();
